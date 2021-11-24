@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>test ver Online</title>
+
+    <!-- 
+        THIS IS AN ONLINE VERSION OF WEBDICT, TO DOWNLOAD THIS, 
+        GO TO MENU -> ABOUT -> DOWNLOAD OFFLINE VERSION 
+    -->
+
+    <link rel="stylesheet" href="./appstyles/app5.css">
+    <link rel="stylesheet" href="./appstyles/appassets.css">
+    <link rel="stylesheet" href="./appstyles/appgrid.css">
+
+    <script src="./appscript/appquery.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="sc loading active">
+            <div class="content flex-col-center">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <h1>Loading Files</h1>    
+            </div>
+        </div>
+        <div class="head">
+            <div class="headcontent">
+                <div class="navigation">
+                    <img src="./media/home-icon.svg" alt="">
+                    <h2 id="state">WebDict</h2>
+                </div>
+                <div class="bulkbutton">
+                    <h2>Search </h2>
+                    <img src="./media/search-icon.svg" alt="">
+                </div>
+                <div class="dateandtime">
+                    <p id="time"></p>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="sc homep">
+                <div class="homect">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="hcp welcome"><strong>Welcome</strong>, {FirstName}</p>
+                            <p class="hcp welcome light">Start typing to search</p>
+                        </div>
+                        <div class="col-3">
+                            <div class="homeblock keyboardparent">
+                                <img src="./media/keyboard-icon.svg" class="hcp welcome keyboard " alt="">
+                            </div>
+                        </div>                
+                    </div>
+                    <ul class="row bottomrow">
+                        <div class="col-6">
+                            <li class="homeblock history">
+                                <h2>History</h2>
+                            </li>
+                        </div>
+                        <div class="col-6">
+                            <li class="homeblock options">
+                                <h2>Options</h2>
+                            </li>
+                        </div>
+                    </ul>
+                    <!-- <iframe src="https://www.dictionary.com/browse/hello" frameborder="0"></iframe> -->
+                </div>
+            </div>
+
+            <div class="sc home">
+
+                    <ul class="homect">
+                        <div class="row firstrow">
+                            <div class="hbw col-7">
+                                <li class="homeblock dictionary">
+                                    <h1>DEFINITION</h1>
+                                </li>
+                            </div>
+                            <div class="hbw col-5">
+                                <li class="homeblock thesaurus">
+                                    <h1>THESAURUS</h1>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="row secondrow">
+                            <div class="hbw col-4">
+                                <li class="homeblock example">
+                                    <h1>EXAMPLE</h1>
+                                </li>
+                            </div>
+                            <div class="hbw col-4">
+                                <li class="homeblock phonetics">
+                                    <h1>PHONETICS</h1>
+                                </li>
+                            </div>
+                            <div class="hbw col-4">
+                                <li class="homeblock random">
+                                    <h1>RANDOM</h1>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="row thirdrow">
+                            <div class="hbw col-6">
+                                <li class="homeblock aboutold">
+                                    <h1>ABOUT</h1>
+                                </li>
+                            </div>
+                            <div class="hbw col-6">
+                                <li class="homeblock optionsold">
+                                    <h1>OPTIONS</h1>
+                                </li>
+                            </div>
+                        </div>
+                    </ul>
+
+            </div>
+
+            <div class="sc bulk">
+                <div class="content">
+                    <input type="text" id="bulkinput" placeholder="Search Word" autocomplete="off">   
+                    <div class="row contentrow">
+                        <div class="col-4 result">              
+                        </div>
+                        <div class="col-8">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./appscript/appdisplay.js"></script>
+    <script src="./appscript/appdict.js"></script>
+</body>
+</html>

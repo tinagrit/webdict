@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Noto+Sans+Mono:wght@300;400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {margin: 0; padding: 0; overflow-y: hidden;}
+
+#app,* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+#app, #app input,
+#app.f-d {font-family: 'Noto Sans Display', sans-serif;}
+#app.f-m {font-family: 'Noto Sans Mono', monospace;}
+#app.f-s {font-family: 'Noto Serif', serif;}
+
+#app p {
+    font-size: 20px;
+}
+
+#app a {
+    color: currentColor;
+}
+
+#app>.head {
+    display: none;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+}
+
+#app>.head.active {
+    display: block;
+}
+
+#app>.head>.headcontent {
+    padding: 10px 20px;
+    text-align: center;
+    max-height: 63px;
+    position: relative;
+
+    max-width: 1280px;
+    margin: auto;
+}
+
+#app>.head h1 {
+    white-space: nowrap;
+}
+
+#app>.head .navigation {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translate(0,-50%);
+    
+}
+
+#app>.head .navigation>h2 {
+    white-space: nowrap;
+}
+
+#app>.head .navigation>*,
+#app>.head .bulkbutton>* {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#app>.head .navigation>img,
+#app>.head .bulkbutton.img {
+    width: 35px;
+}
+
+#app>.head .bulkbutton,
+#app>.head .dateandtime {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    
+}
+
+#app>.head .bulkbutton {
+    display: none;
+}
+
+
+#app>.body {
+    background-color: #f9f9fa;
+    height: calc(100% - 40px);
+    overflow-y: hidden;
+
+}
+
+#app>.body .sc,
+#app>.loading {
+    height: 100%;
+    overflow-y: scroll;
+    display: none;
+    position: relative;
+}
+
+#app>.loading {
+    height: 100%;
+    background-color: #f9f9fa;
+
+}
+
+#app>.loading>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#app>.body .sc.active,
+#app>.loading.active {
+    display: block;
+}
+
+#app>.body .sc>.content,
+#app>.loading>.content {
+    min-height: 100%;
+    max-width: 1280px;
+    margin: auto;
+}
+
+/* LOADING */
+#app> .loading h1 {
+    margin: 15px 0 0 0;
+}
+
+/* HOME */
+#app>.body .home {
+    align-items: center;
+    justify-content: center;
+}
+#app>.body .homect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    height: 80%;
+    max-height: 500px;
+    width: 90%;
+    max-width: 1280px;
+}
+#app>.body .homep .homect {
+    width: 90%;
+    max-width: 778px;
+    height: fit-content
+}
+#app>.body .homect .row h1 {
+    white-space: nowrap;
+}
+#app>.body .homect .row .hbw {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+#app>.body .homect .homeblock {
+    padding: 0 25px;
+    background-color: #ebebeb;
+    color: black;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#app>.body .firstrow {
+    height: 50%;
+}
+#app>.body .firstrow h1 {
+    font-size: 2em;
+}
+#app>.body .secondrow {
+    height: 30%;
+}
+#app>.body .secondrow h1 {
+    font-size: 1.5em;
+}
+#app>.body .thirdrow {
+    height: 20%;
+}
+#app>.body .thirdrow h1 {
+    font-size: 1.5em;
+}
+
+#app>.body .homect .homeblock:hover,
+#app>.body .homect li.selected {
+    outline: 6px solid black;
+    cursor: pointer;
+}
+
+#app>.body .homect .homeblock.dictionary {
+    background-color: #396EB0;
+    color: white;
+}
+
+#app>.body .homect .homeblock.thesaurus {
+    background-color: #116530;
+    color: white;
+}
+
+#app>.body .homep .hcp.welcome {
+    font-size: 30px;
+}
+
+#app>.body .homep .keyboard {
+    width: 50%;
+}
+
+@media (max-width: 778px) {
+    #app>.body .homep .hcp.welcome {
+        font-size: 4vw
+    }
+}
+
+#app>.body .homep .bottomrow {
+    margin-top: 25px;
+}
+
+#app>.body .homep .bottomrow .homeblock {
+    padding: 10px
+}
+
+
+#app>.body .bulk #bulkinput {
+    display: block;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    background-color: transparent;
+    width: 90%;
+    margin: 0 auto 30px auto;
+    padding-top: 10px;
+    border-bottom: 2px solid black;
+}
+
+#app>.body .bulk .content {
+    height: 100%;
+    overflow-y: hidden;
+    position: relative;
+}
+
+#app>.body .bulk .contentrow {
+    height: calc(100% - 83px)
+}
+
+#app>.body .bulk .result {
+    list-style: none;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+#app>.body .bulk .result .searchresult {
+    padding: 8px 20px;
+    overflow-wrap: break-word;
+}
+
+#app>.body .bulk .result .online {
+    text-align: center;
+    color: #8a8a8a;
+}
+
+#app>.body .bulk .result .searchresult:not(:last-child) {
+    border-bottom: 1px solid #121212
+
+}
