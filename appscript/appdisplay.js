@@ -23,7 +23,7 @@ _('.homep').class.add('active');
 // When a key is pressed
 const checkKey = (e) => {
     if (e.keyCode == 27) {
-        moveTo('.home')
+        moveTo('.homep')
     }
 
     touch = false;
@@ -59,6 +59,7 @@ function moveTo(a,b) {
     if (b == undefined) {
         switch (a) {
             case '.home'    : b = 'Home'    ;break
+            case '.homep'   : b = 'Home'    ;break
             case '.bulk'    : b = 'Search'  ;break
             default         : b = 'App'     ;break
         }
@@ -82,7 +83,7 @@ function moveTo(a,b) {
 
 window.addEventListener('keydown', checkKey);
 
-_('#app>.head .navigation').addEventListener('click', ()=>{moveTo('.home')})
+_('#app>.head .navigation').addEventListener('click', ()=>{moveTo('.homep')})
 _('#app>.head .bulkbutton').addEventListener('click', ()=>{
     moveTo('.bulk');
 })

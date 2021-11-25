@@ -101,7 +101,7 @@ body {margin: 0; padding: 0; overflow-y: hidden;}
 #app>.body .sc,
 #app>.loading {
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: none;
     position: relative;
 }
@@ -267,6 +267,12 @@ body {margin: 0; padding: 0; overflow-y: hidden;}
 #app>.body .bulk .result .searchresult {
     padding: 8px 20px;
     overflow-wrap: break-word;
+    cursor: pointer;
+}
+
+#app>.body .bulk .result .searchresult.selected {
+    background-color: #2b2b2b;
+    color: white;
 }
 
 #app>.body .bulk .result .online {

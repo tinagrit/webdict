@@ -7,9 +7,24 @@ Array.prototype.resize = function(newSize) {
     return this
 }
 
+// function notInViewport(element) {
+//     const rect = element.getBoundingClientRect();
+//     if (
+//         rect.top >= 0 &&
+//         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+//     ) {
+//         return false;
+//     } else {
+//         return [rect.top,rect.bottom];
+//     }
+// }
+
+
 const dict = {};
 dictcount = 0;
 dictdone = false;
+
+let selectindex = -1;
 
 for (i=0; i<26; i++) {
     _.json('./data/'+(i+1)+'.json',(dat) => {
@@ -20,6 +35,8 @@ for (i=0; i<26; i++) {
 }
 
 _('#bulkinput').addEventListener('input',() => {
+   
+
     _('.bulk .content .result').innerHTML = '';
     term = _('#bulkinput').value
 
@@ -39,6 +56,9 @@ _('#bulkinput').addEventListener('input',() => {
                            
                            div = document.createElement('li');
                            div.classList.add('searchresult');
+                           div.onclick = function() {
+                               selectme(this)
+                           }
 
                            p = document.createElement('p');
                            p.classList.add('word');
@@ -52,11 +72,63 @@ _('#bulkinput').addEventListener('input',() => {
         online = document.createElement('li');
         online.classList.add('searchresult');
         online.classList.add('online');
+        online.onclick = function() {
+            searchme(this)
+        }
 
         onlinetext = document.createElement('p');
         onlinetext.classList.add('word');
+        onlinetext.classList.add('onlineword');
         onlinetext.innerHTML = `<strong>SEARCH ONLINE</strong> ${term}`;
         online.appendChild(onlinetext);
         _('.bulk .content .result').appendChild(online);
+
+        selectindex = 0;
+        _('.searchresult','0').class.add('selected');
+        _('.searchresult','0').focus();
     }
+    
 })
+
+document.addEventListener('keydown',moveResults)
+
+function selectme(w) {
+    _('.selected').class.remove('selected');
+
+    selectindex = Array.from(w.parentNode.children).indexOf(w)
+
+    _(w).class.add('selected');
+
+    console.log(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
+}
+
+function moveResults(e) {
+    if (_('.bulk').class.has('active')) {
+        if (e.keyCode == 40) {
+            if (selectindex != _('.result').childElementCount -1) {
+                e.preventDefault();
+                _('.selected').class.remove('selected')
+                selectindex++;
+                _('.searchresult',String(selectindex)).class.add('selected');
+                _('.searchresult',String(selectindex)).focus();
+            }
+        }
+        if (e.keyCode == 38) {
+            if (selectindex != 0) {
+                e.preventDefault();
+                _('.selected').class.remove('selected')
+                selectindex--;
+                _('.searchresult',String(selectindex)).class.add('selected');
+                _('.searchresult',String(selectindex)).focus();
+            }
+        }
+
+        _('.result').scrollTop = 0;
+
+        let offset = _('.searchresult.selected').getBoundingClientRect().top - _('.result').getBoundingClientRect().top
+
+        _('.result').scrollTop = offset - parseFloat(getComputedStyle(_('.searchresult.selected'), null).height.replace("px", ""));
+
+        console.log(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
+    }
+}
