@@ -87,6 +87,9 @@ _('#bulkinput').addEventListener('input',() => {
         _('.searchresult','0').class.add('selected');
         _('.searchresult','0').focus();
     }
+
+    _('.result').scrollTop = 0;
+    showWord(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
     
 })
 
@@ -100,6 +103,7 @@ function selectme(w) {
     _(w).class.add('selected');
 
     console.log(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
+    showWord(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
 }
 
 function moveResults(e) {
@@ -111,6 +115,8 @@ function moveResults(e) {
                 selectindex++;
                 _('.searchresult',String(selectindex)).class.add('selected');
                 _('.searchresult',String(selectindex)).focus();
+
+                showWord(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
             }
         }
         if (e.keyCode == 38) {
@@ -120,6 +126,8 @@ function moveResults(e) {
                 selectindex--;
                 _('.searchresult',String(selectindex)).class.add('selected');
                 _('.searchresult',String(selectindex)).focus();
+
+                showWord(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
             }
         }
 
@@ -130,5 +138,44 @@ function moveResults(e) {
         _('.result').scrollTop = offset - parseFloat(getComputedStyle(_('.searchresult.selected'), null).height.replace("px", ""));
 
         console.log(_('.searchresult.selected>p.word:not(.onlineword)').innerHTML);
+        
+    }
+}
+
+let a
+function showWord(word) {
+    let dicSearch = dict[word];
+
+    _('.alldefines').innerHTML = '';
+    _('.previewdefinition .synonyms').innerHTML = '';
+
+    _('.previewdefinition .word').innerHTML = word;
+
+    let allmeanings = Object.values(dicSearch.MEANINGS);
+
+    allmeanings.forEach(each => {
+        definebig = document.createElement('div');
+        definebig.classList.add('define');
+
+        definepos = document.createElement('p');
+        definepos.classList.add('partOfSpeech');
+        definepos.innerHTML = each[0];
+        definebig.appendChild(definepos);
+
+        definemea = document.createElement('p');
+        definemea.classList.add('meaning');
+        definemea.innerHTML = each[1];
+        definebig.appendChild(definemea)
+
+        _('.alldefines').appendChild(definebig)
+    })
+
+    if (dicSearch.SYNONYMS.length > 0) {
+        dicSearch.SYNONYMS.forEach(each=> {
+            result = '';
+            _('.previewdefinition .synonyms').innerHTML += each + ', ';
+            
+        })
+        _('.previewdefinition .synonyms').innerHTML = _('.previewdefinition .synonyms').innerHTML.slice(0, -2);
     }
 }

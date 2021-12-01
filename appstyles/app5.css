@@ -16,9 +16,9 @@ body {margin: 0; padding: 0; overflow-y: hidden;}
 }
 
 #app, #app input,
-#app.f-d {font-family: 'Noto Sans Display', sans-serif;}
-#app.f-m {font-family: 'Noto Sans Mono', monospace;}
-#app.f-s {font-family: 'Noto Serif', serif;}
+#app .f-d {font-family: 'Noto Sans Display', sans-serif;}
+#app .f-m {font-family: 'Noto Sans Mono', monospace;}
+#app .f-s {font-family: 'Noto Serif', serif;}
 
 #app p {
     font-size: 20px;
@@ -283,4 +283,31 @@ body {margin: 0; padding: 0; overflow-y: hidden;}
 #app>.body .bulk .result .searchresult:not(:last-child) {
     border-bottom: 1px solid #121212
 
+}
+
+#app>.body .bulk .previewdefinition .word {
+    font-family: 'Noto Serif', serif;
+    font-size: 45px;
+}
+
+#app>.body .bulk .previewdefinition .synonyms {
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+    bottom: 3px;
+    position: relative;
+}
+
+#app>.body .bulk .previewdefinition .define {
+    margin: 20px 0;
+}
+
+#app>.body .bulk .previewdefinition .partOfSpeech {
+    font-family: 'Noto Sans Mono', monospace;
+    color: #868686;
+}
+
+#app>.body .bulk .previewdefinition .seemore h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 50px;
 }
