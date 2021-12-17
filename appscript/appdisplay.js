@@ -1,4 +1,7 @@
+let step = -1;
 // Fetch files here
+
+
 
 let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -15,6 +18,7 @@ let timeinterv = setInterval(showTime,60000)
 
 
 // After fetch, put home in place
+step = 0;
 _('.head').class.add('active');
 _('.loading').class.remove('active')
 _("#state").innerHTML = 'Home';
@@ -22,7 +26,7 @@ _('.homep').class.add('active');
 
 // When a key is pressed
 const checkKey = (e) => {
-    if (e.keyCode == 27) {
+    if (e.keyCode == 27 && step == 1) {
         moveTo('.homep')
     }
 
@@ -55,7 +59,8 @@ const checkKey = (e) => {
 }
 
 // Move between different pages
-function moveTo(a,b) {
+function moveTo(a,b,c) {
+    _('.realdefinition').css('display','none')
     if (b == undefined) {
         switch (a) {
             case '.home'    : b = 'Home'    ;break
@@ -74,10 +79,17 @@ function moveTo(a,b) {
         _('#bulkinput').focus();
     }
 
+    if (c) {
+        step = c;
+    } else {
+        step = 1;
+    }
+
     if (a == '.home') {
         if (_('.selected')) {
             _('.selected').class.remove('selected');
         }
+        step = 0;
     }
 }
 
